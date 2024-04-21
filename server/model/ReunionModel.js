@@ -4,5 +4,5 @@ module.exports = (connection,DataTypes)=>{
         Data:DataTypes.DATE,
         Heure:DataTypes.TIME,
     })
-    return ;
+    return Reunion;
 }

@@ -2,8 +2,8 @@ const db = require('../database')
 module.exports = {
     getAll:async(req, res)=>{
         try {
-            const AllFiliales = db.Filiale.findAll({})
-            res.json(AllFiliales)
+            const AllVote = db.Vote.findAll({})
+            res.json(AllVote)
             
             
         } catch (error) {
@@ -13,12 +13,12 @@ module.exports = {
     },
     getOne:async(req, res)=>{
         try {
-            const filiale = await db.Filiale.findOne({
+            const OneVote = db.Vote.findOne({
                 where:{
                     id:req.params.id
                 }
             })
-            res.json(filiale)
+            res.json(OneVote)
             
             
         } catch (error) {
@@ -28,8 +28,8 @@ module.exports = {
     },
     create:async(req, res)=>{
         try {
-            const filiale = await db.Filiale.create(req.body)
-            res.json(filiale)
+            const newVote = await db.Vote.create(req.body)
+            res.json(newVote)
             
             
         } catch (error) {
@@ -39,12 +39,12 @@ module.exports = {
     },
     update:async(req, res)=>{
         try {
-            const filiale = await db.Filiale.update(req.body, {
+            const updatedVote = await db.Vote.update(req.body, {
                 where:{
                     id:req.params.id
                 }
             })
-            res.json(filiale)
+            res.json(updatedVote)
             
             
         } catch (error) {
@@ -54,12 +54,12 @@ module.exports = {
     },
     remove:async(req, res)=>{
         try {
-            const filiale = await db.Filiale.destroy({
+            const deletedVote = await db.Vote.destroy({
                 where:{
                     id:req.params.id
                 }
             })
-            res.json(filiale)
+            res.json(deletedVote)
             
             
         } catch (error) {

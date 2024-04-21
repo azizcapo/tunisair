@@ -26,15 +26,49 @@ const OrderJour = require("./model/OrderJourModel")(connection,DataTypes)
 const Fonction = require("./model/FonctionModel")(connection,DataTypes)
 const Filiale = require("./model/FilialeModel")(connection,DataTypes)
 const Comptes = require("./model/Comptes.model")(connection,DataTypes)
+const Vote = require("./model/VoteModel")(connection,DataTypes)
 const db = {}
 
-connection.sync({alter:true}).then(()=>{
+// console.log(Utilisateur);
+db.Utilisateur = Utilisateur
+db.Reunion = Reunion
+db.Refereniel = Refereniel
+db.Pv = Pv
+db.OrderJour = OrderJour
+db.Fonction = Fonction
+db.Filiale = Filiale
+db.Comptes = Comptes
+db.Vote = Vote
+
+Filiale.hasMany(Comptes)
+Comptes.belongsTo(Filiale)
+
+Utilisateur.hasMany(Comptes)
+Comptes.belongsTo(Utilisateur)
+
+OrderJour.hasMany(Comptes)
+Comptes.belongsTo(OrderJour)
+
+Vote.hasMany(Comptes)
+Comptes.belongsTo(Vote)
+
+OrderJour.belongsTo(Reunion)
+Reunion.belongsTo(OrderJour)
+
+Reunion.belongsTo(Pv)
+Pv.belongsTo(Reunion)
+
+
+
+
+
+connection.sync({force:true}).then(()=>{
     console.log("table created successfully")
 }).catch((error)=>{
     console.log(error)
 })
 
 
-module.exports=db
+module.exports= db
 
 
