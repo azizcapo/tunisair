@@ -1,165 +1,60 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'segoe UI','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.user-img{
-    width:50%;
-    border-radius: 100%;
-    border: 1px solid #eee;
-}
-
-.sidebar{
-    position: absolute;
-    top: 0;
+.sidenav{
+    background-color: white;
+    width: 12%;
+    height: 98.3%;
+    position: fixed;
     left: 0;
-    height: 100vh;
-    width: 80px;
-    background-color: #12171e;
-    padding: 0.4rem 0.8rem;
-    transition: all 0.5s ease;
+    top: 0;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.sidebar.active ~ .main-content{
-    left: 250px;
-    width: calc(100% - 250px);
+.sidenav-header{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
 }
 
-.sidebar.active{
- width: 250px;
+.sidenav-header img {
+    width: 45%;
+    height: 100%;
 }
-
-.sidebar #btn{
-    position: absolute;
-    color: #fff;
-    top: .4rem;
-    left: 50;
-    font-size: 1.2rem;
-    line-height: 50px;
-    transform: translateX(-50%);
+.sidenav-header p {
+    color: #D40000 ;
+    font-size: 30px;
+    font-weight: 500;
+}
+.sidenav-options{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+}
+.sidenav-option {
+    width: 90%;
+    height: 3rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.5rem;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 8px;
     cursor: pointer;
 }
-
-.sidebar.active #btn{
-    left: 90%;
+.sidenav-option:hover{
+    background-color: #D40000;
+    color: white;
 }
 
-.sidebar .top .logo {
-    color: #fff;
-    display: flex;
-    height: 50px;
-    width: 100%;
-    align-items: center;
-    pointer-events: none;
-    opacity: 0;
+.icons{
+    width: 1.5rem;
+    height: 1.5rem;
 }
-
-.sidebar.active .top .logo {
-    opacity: 1;
-}
-
-.top .logo i {
-    font-size: 2rem;
-}
-
-.user{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.user p {
-    color: #fff;
-    opacity: 1;
-}
-
-.bold {
-    font-weight: 600;
-}
-
-.sidebar p {
-    opacity: 0;
-}
-
-.sidebar.active p {
-    opacity: 1;
-}
-
-.sidebar ul li {
-    position: relative;
-    list-style-type: none;
-    height: 50px;
-    width: 90%;
-    line-height: 50px;
-}
-
-.sidebar ul li a {
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    border-radius: 0.8rem;
-}
-.sidebar ul li a:hover{
-    background-color: #fff;
-    color: #12171e;
-}
-
-.sidebar ul li a i {
-    min-width: 50px;
-    text-align: center;
-    height: 50px;
-    border-radius: 12px;
-    line-height: 50px;
-    
-}
-
-.sidebar .nav-item {
-    opacity: 0;
-}
-
-.sidebar.active .nav-item {
-    opacity: 1;
-}
-
-.sidebar ul li .tooltip {
-    position: absolute;
-    left: 125px;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 0.5rem 0.8rem rgba(0,0,0,0.2);
-    border-radius: .6rem;
-    padding: .4rem 1.2rem;
-    line-height: 1.8rem;
-    z-index: 20;
-    opacity: 0;
-}
-
-.sidebar ul li:hover .tooltip {
-    opacity: 1;
-}
-
-.sidebar.active ul li .tooltip{
-    display: none;
-}
-.main-content{
-    position: relative;
-    background-color: #eee;
-    min-height: 100vh;
-    top: 0;
-    left: 80px;
-    transition: all 0.5s ease;
-    width: calc(100% - 80px);
-    padding: 1rem;
-}
-
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-}
-

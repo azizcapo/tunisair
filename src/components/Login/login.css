@@ -1,10 +1,16 @@
-.form {
+.form2 {
     background-color: white;
     border-radius: 20px;
     box-sizing: border-box;
-    /* height: 500px; */
     padding: 20px;
-    /* width: 320px; */
+    width: 35%;
+  }
+.form  {
+    background-color: white;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 100%;
   }
 
   .noAccount{
@@ -15,11 +21,7 @@
     color: black;
     font-size: 14px; 
   }
-  .goRegister{
-    color: #dc2f55;
-    font-weight: 500;
-    cursor: pointer;
-  }
+
   
 
   .title {
@@ -57,7 +59,7 @@
     border-radius: 12px;
     border: 1px solid gray;
     box-sizing: border-box;
-    color: #eee;
+    /* color: black; */
     font-size: 18px;
     height: 100%;
     outline: 0;
@@ -80,7 +82,7 @@
 
   
   .iLabel {
-    color: black;
+    color: #dc2f55;
     font-family: sans-serif;
     left: 20px;
     line-height: 14px;
@@ -89,21 +91,24 @@
     transform-origin: 0 50%;
     transition: transform 200ms, color 200ms;
     top: 20px;
+    background-color: white;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  .input:focus ~ .cut {
+  .input ~ .cut {
     transform: translateY(8px);
   }
   
-  .input:focus ~ .iLabel {
+  .input ~ .iLabel {
     transform: translateY(-30px) translateX(10px) scale(0.75);
   }
   
-  .input:not(:focus) ~ .iLabel {
-    color: #808097;
-  }
+
   
-  .input:focus ~ .iLabel {
+  .input  .iLabel {
     color: #dc2f55;
   }
   

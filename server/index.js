@@ -11,6 +11,12 @@ const voteRoute = require("./router/VoteRouter")
 const fonctionRoute = require("./router/FonctionRoute")
 const ReferenielRoute = require("./router/ReferenielRoute")
 const ordreJourRoute = require("./router/OrdreJourRoute")
+const DocumentRoute = require("./router/DocumentRouter")
+const InvitationRoute = require("./router/InvitationRouter")
+const RecommandationRoute = require("./router/RecommandationRouter")
+const presenceRouter = require("./router/Presence.router")
+
+
 
 
 
@@ -25,13 +31,19 @@ app.use(express.json())
 
 app.use("/api/Filiale", FilialeRoute)
 app.use("/api/Pv", PvRoute)
-app.use("/api/Reunion", ReunionRoute)
+app.use("/api/reunion", ReunionRoute)
 app.use("/api/utilisateur", utilisateurRoute)
 app.use("/api/comptes", comptesRouter)
 app.use("/api/vote", voteRoute)
 app.use("/api/fonction", fonctionRoute)
 app.use("/api/referniel", ReferenielRoute)
 app.use("/api/ordreJour", ordreJourRoute)
+app.use("/api/document", DocumentRoute)
+app.use("/api/invitation", InvitationRoute)
+app.use("/api/recommandation", RecommandationRoute)
+app.use("/api/presence",presenceRouter)
+
+
 
 
 

@@ -1,97 +1,172 @@
-import React from 'react'
-import"./SideNav.css"
+import React from "react";
+import "./SideNav.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAddressBook,
+  faBuilding,
+  faCircleUser,
+  faFile,
+  faMessage,
+  faRightFromBracket,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-const SideNav = () => {
- 
-    // let btn = document.querySelector('#btn')
-    // let sidebar = document.querySelector('.sidebar')
-
-    // btn.onclick = function () {
-    //     sidebar.classList.toggle('active');
-    // }
+const SideNav = ({ account , user}) => {
+  const navigate = useNavigate();
 
   return (
-    <div>  
-<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
-
-       <div className="sidebar">
-        <div className="top">
-            <div className="logo">
-                <i className="bx bxl-codepen"></i>
-                <span>Tunisair</span>
+    <div className="sidenav">
+      <div className="sidenav-header">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/fr/6/60/Tunis_Air_Club.png"
+          alt=""
+        />
+        <p>Tunisair</p>
+      </div>
+      <div className="sidenav-options">
+        <div
+          className="sidenav-option"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("profile", { state: { account: account } });
+          }}
+        >
+          <FontAwesomeIcon className="icons" icon={faCircleUser} />
+          <p>Profile</p>
+        </div>
+        {account.role === "Gestionnaire" ? (
+          <>
+            {" "}
+            <div
+              className="sidenav-option"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("utilisateurs", { state: { account: account } });
+              }}
+            >
+              <FontAwesomeIcon className="icons" icon={faUsers} />
+              <p>Utilisateurs</p>
             </div>
-            <i className="bx bx-menu" id="btn"></i>
-        </div>
-        <div className='user'>
-            <img src='' alt="me" className='user-img'/>
-                <div>
-                    <p className='bold'>UserName</p>
-                    <p>role</p>
-                </div>
-        </div>
-        <ul>
-        <li>
-                <a href="#" >
-                    <i className='bx bx-cog'></i>
-                    <span className='nav-item'>Profile</span>
-                </a>
-                <span className='tooltip'>Profile</span>
-            </li>
-
-            <li>
-                <a href="#" >
-                    <i className='bx bxs-grid-alt'></i>
-                    <span className='nav-item'>Reunion</span>
-                </a>
-                <span className='tooltip'>Reunion</span>
-            </li>
-            <li>
-                <a href="#" >
-                    <i className='bx bxs-grid-alt'></i>
-                    <span className='nav-item'>Filiales</span>
-                </a>
-                <span className='tooltip'>Filiales</span>
-            </li>
-            <li>
-                <a href="#" >
-                    <i className='bx bxs-food-menu'></i>
-                    <span className='nav-item'>Pv</span>
-                </a>
-                <span className='tooltip'>PV</span>
-            </li>
-            <li>
-                <a href="#" >
-                    <i className='bx bx-body'></i>
-                    <span className='nav-item'>users</span>
-                </a>
-                <span className='tooltip'>users</span>
-            </li>
-            <li>
-                <a href="#" >
-                    <i className='bx bx-log-out'></i>
-                    <span className='nav-item'>Logout</span>
-                </a>
-                <span className='tooltip'>Logout</span>
-            </li>
-        </ul>
-       </div>
-
-       <div className='main-content'>
-        <div className='container'>
-            <h1> formulair 1</h1>
-            <h1> formulair 2</h1>
-        </div>
-       </div>
-
-
-
-
-        
+            <div
+              className="sidenav-option"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("filiales", { state: { account: account } });
+              }}
+            >
+              <FontAwesomeIcon className="icons" icon={faBuilding} />
+              <p>Filiales</p>
+            </div>
+            <div
+              className="sidenav-option"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("comptes", { state: { account: account } });
+              }}
+            >
+              <FontAwesomeIcon className="icons" icon={faAddressBook} />
+              <p>Comptes</p>
+            </div>{" "}
+          </>
+        ) : (
+          <></>
+        )}
+        {account.role === "Sécrétaire" ? (
+          <>
+            <div
+              className="sidenav-option"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("reunions", { state: { account: account } });
+              }}
+            >
+              <FontAwesomeIcon className="icons" icon={faUsers} />
+              <p>Réunions</p>
+            </div>
+            <div className="sidenav-option" 
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("Pv", { state: { account: account } });
+            }}
+            >
+              <FontAwesomeIcon className="icons" icon={faFile} />
+              <p>PV</p>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+        {account.role === "Actionnaire" ? (
+          <>
+            <div className="sidenav-option"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("invitation", { state: { account: account } });
+              }}>
+              <FontAwesomeIcon className="icons" icon={faMessage} />
+              <p>Invitaions</p>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+        {account.role === "Décideur" ? (
+          <>
+            <div className="sidenav-option">
+              <FontAwesomeIcon className="icons" icon={faBuilding} />
+              <p>Filiale</p>
+            </div>
+            <div className="sidenav-option"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("Pv", { state: { account: account } });
+            }}
+            >
+              <FontAwesomeIcon className="icons" icon={faFile} />
+              <p>PV</p>
+            </div>
+            <div className="sidenav-option">
+              <FontAwesomeIcon className="icons" icon={faUsers} />
+              <p>Réunions</p>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+        {account.role === "Administrateur" ? (
+          <>
+            <div className="sidenav-option"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("invitation", { state: { account: account } });
+            }}
+            >
+              <FontAwesomeIcon className="icons" icon={faMessage} />
+              <p>Invitations</p>
+            </div>
+            <div className="sidenav-option">
+              <FontAwesomeIcon className="icons" icon={faFile} />
+              <p>PV</p>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
+      <div
+        className="sidenav-option"
+        onClick={(e) => {
+          e.preventDefault();
+          
+          navigate("/comptes" ,  {state : {userId : user.id}});
+        }}
+      >
+        <FontAwesomeIcon className="icons" icon={faRightFromBracket} />
+        <p>Log Out</p>
+      </div>
     </div>
-    
-     
-    
-  )
-}
+  );
+};
 
-export default SideNav
+export default SideNav;
